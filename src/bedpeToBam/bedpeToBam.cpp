@@ -254,8 +254,8 @@ void ConvertBedPEToBam(const BEDPE &bedpe, BamAlignment &bam1,BamAlignment &bam2
     bam1.MatePosition = bedpe.start2;
     
 	if(chromToId[bedpe.chrom1] == chromToId[bedpe.chrom2]){
-		bam1.InsertSize   = bedpe.start2-bedpe.start1;
-		bam2.InsertSize   = bedpe.start2-bedpe.start1;
+		bam1.InsertSize   = std::max(bedpe.end1, bedpe.end2) - std::min(bedpe.start1, bedpe.start2);
+		bam2.InsertSize   = bam1.InsertSize;
 		if((bedpe.strand1 == "+") && (bedpe.strand2 == "-")){
 			bam1.SetIsProperPair(true);
 			bam2.SetIsProperPair(true);
