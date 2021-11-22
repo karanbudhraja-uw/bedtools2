@@ -189,7 +189,7 @@ test/htsutil: $(OBJ_DIR)/htsutil.o $(HTSDIR)/libhts.a
 
 $(BIN_DIR)/intersectBed: | $(BIN_DIR)
 	@echo "- Creating executables for old CLI."
-	@python scripts/makeBashScripts.py
+	@python3 scripts/makeBashScripts.py
 	@chmod +x bin/*
 	@echo "done."
 
